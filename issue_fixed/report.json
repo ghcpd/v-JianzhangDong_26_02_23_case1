@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-02-23T00:00:00Z",
+  "python": {
+    "original_requires": ">=3.14",
+    "updated_requires": ">=3.11",
+    "reason": "Python 3.14 was a future/non-standard requirement. The project runs on modern stable Python versions; >=3.11 aligns with current LTS support and security fixes."
+  },
+  "dependencies": [
+    {
+      "name": "fastapi",
+      "old": "0.95.0",
+      "new": "0.111.0",
+      "reason": "Upgrade for security patches, compatibility with pydantic v2, and improved testclient behavior."
+    },
+    {
+      "name": "uvicorn",
+      "old": "0.21.0",
+      "new": "0.30.1",
+      "reason": "Upgrade to latest stable ASGI server with security and performance fixes."
+    },
+    {
+      "name": "pydantic",
+      "old": "1.10.13",
+      "new": "2.12.5",
+      "reason": "pydantic v1 is EOL; v2.12.5 is the latest stable and provides prebuilt wheels for Python 3.14 plus security updates."
+    },
+    {
+      "name": "pydantic-settings",
+      "old": null,
+      "new": "2.13.1",
+      "reason": "Required by app/config.py for BaseSettings in pydantic v2. Updated to match pydantic 2.12.x and avoid Rust build issues."
+    },
+    
+    {
+      "name": "pandas",
+      "old": "1.5.3",
+      "new": "2.2.2",
+      "reason": "Upgrade for security fixes and current numpy compatibility."
+    },
+    {
+      "name": "numpy",
+      "old": "1.23.5",
+      "new": "1.26.4",
+      "reason": "Upgrade to supported version compatible with pandas 2.x and Python >=3.11."
+    },
+    {
+      "name": "python-dateutil",
+      "old": "2.8.2",
+      "new": "2.9.0.post0",
+      "reason": "Upgrade to latest stable with bug and security fixes."
+    },
+    {
+      "name": "structlog",
+      "old": "21.5.0",
+      "new": "24.1.0",
+      "reason": "Upgrade to latest stable logging library." 
+    },
+    {
+      "name": "pyyaml",
+      "old": "5.4.1",
+      "new": "6.0.2",
+      "reason": "pyyaml 5.4.1 has known CVEs (e.g., CVE-2020-14343, CVE-2020-1747). 6.0.2 removes these vulnerabilities." 
+    },
+    {
+      "name": "jsonschema",
+      "old": "3.2.0",
+      "new": "4.22.0",
+      "reason": "Upgrade for Draft2020-12 support and security fixes." 
+    },
+    {
+      "name": "httpx",
+      "old": "0.23.0",
+      "new": "0.27.0",
+      "reason": "Upgrade for FastAPI test client compatibility and security fixes." 
+    },
+    {
+      "name": "anyio",
+      "old": "3.6.2",
+      "new": "4.4.0",
+      "reason": "Upgrade to latest stable required by httpx/fastapi."
+    },
+    {
+      "name": "pytest",
+      "old": "7.2.0",
+      "new": "8.3.2",
+      "reason": "Upgrade to latest stable test runner." 
+    }
+  ],
+  "other_changes": [
+    "Added issue_fixed/requirements_backup.txt to preserve original dependency list.",
+    "Created scripts for environment setup and automated testing.",
+    "Added auto_test.py to run tests in an isolated venv and log results.",
+    "Fixed missing ReportRequest model in app/models.py so tests can pass without altering tests."
+  ]
+}
