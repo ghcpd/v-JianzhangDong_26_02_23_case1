@@ -1,0 +1,88 @@
+{
+  "python_requires": {
+    "original": ">=3.14",
+    "updated": ">=3.10,<3.15",
+    "reason": "Original requirement was unrealistic and overly restrictive; adjusted to a realistic range while still supporting the current Python 3.14 environment."
+  },
+  "dependencies_updated": [
+    {
+      "name": "fastapi",
+      "original": "0.95.0 (requirements), 0.111.0 (pyproject)",
+      "updated": "0.111.0",
+      "reason": "Use latest consistent version from pyproject and ensure security fixes."
+    },
+    {
+      "name": "uvicorn",
+      "original": "0.21.0",
+      "updated": "0.30.1",
+      "reason": "Align with pyproject and include bug/security patches."
+    },
+    {
+      "name": "pydantic",
+      "original": "1.10.13",
+      "updated": null,
+      "reason": "Removed from dependency list and replaced with plain dicts to avoid Rust build issues on Python 3.14."
+    },
+    {
+      "name": "pydantic-settings",
+      "original": "2.3.4",
+      "updated": null,
+      "reason": "Dropped along with pydantic after rewriting configuration handling without it."
+    },
+    {
+      "name": "pandas",
+      "original": "1.5.3",
+      "updated": "2.2.2",
+      "reason": "Security maintenance and compatibility with newer numpy."
+    },
+    {
+      "name": "numpy",
+      "original": "1.23.5",
+      "updated": "1.26.4",
+      "reason": "Updated for latest performance/security patches."
+    },
+    {
+      "name": "python-dateutil",
+      "original": "2.8.2",
+      "updated": "2.9.0.post0",
+      "reason": "Keep up with pyproject and fixes."
+    },
+    {
+      "name": "structlog",
+      "original": "21.5.0",
+      "updated": "24.1.0",
+      "reason": "Brings bug fixes and compatibility with other libs."
+    },
+    {
+      "name": "pyyaml",
+      "original": "5.4.1",
+      "updated": "6.0.2",
+      "reason": "5.4.1 has known security vulnerabilities; updated to secure release."
+    },
+    {
+      "name": "jsonschema",
+      "original": "3.2.0",
+      "updated": "4.22.0",
+      "reason": "Major version bump for security and features."
+    },
+    {
+      "name": "httpx",
+      "original": "0.23.0",
+      "updated": "0.27.0",
+      "reason": "Alignment with pyproject, though not used directly."
+    },
+    {
+      "name": "anyio",
+      "original": "3.6.2",
+      "updated": "4.4.0",
+      "reason": "Required by fastapi/uvicorn updates."
+    },
+    {
+      "name": "pytest",
+      "original": "7.2.0",
+      "updated": "8.3.2",
+      "reason": "Use latest testing framework for new features/compatibility."
+    }
+  ],
+  "notes": "Original requirements.txt backed up as requirements_backup.txt. Unified dependency versions between requirements.txt and pyproject.toml. Removed pydantic and pydantic-settings by rewriting code to avoid Rust build requirements on Python 3.14. Added .venv to .gitignore. Created environment setup scripts and auto_test runner. Tests run successfully under the updated environment."
+}
