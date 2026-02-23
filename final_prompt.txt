@@ -1,0 +1,21 @@
+Hey, I need help fixing some dependency issues in this Python project. 
+
+**The Problem:**
+The requirements.txt file has seriously outdated packages with known security vulnerabilities (especially pyyaml 5.4.1). Also, some packages aren't even pinned to specific versions, and the pyproject.toml specifies Python >=3.14 which doesn't make sense. The dependencies are also inconsistent between requirements.txt and pyproject.toml.
+
+**What I Need:**
+Please create a new folder called `issue_fixed/` and set everything up there - don't modify the original files. In that folder:
+
+1. Backup the original requirements.txt as requirements_backup.txt
+2. Check Python/pip versions and update requirements.txt with secure, compatible versions
+3. Create a report.json documenting what changed and why
+4. Generate environment setup scripts (Dockerfile, setup.sh, run_test.bat, run_test.sh)
+5. Create a clean virtual environment in .venv/ with all dependencies installed
+6. Update/create .gitignore to exclude .venv/
+7. Create auto_test.py that runs all tests in the tests/ folder using the .venv environment and logs results to logs/test_run.log
+8. Write a README.md explaining everything
+
+**Critical Requirement:**
+All tests in the tests/ folder must pass automatically without any modifications to the test files themselves. The auto_test.py should discover and run all tests, and they all need to pass. Results should be logged to logs/test_run.log.
+
+Thanks!
