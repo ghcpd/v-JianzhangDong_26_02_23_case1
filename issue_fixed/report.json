@@ -1,0 +1,73 @@
+{
+  "python_version": "3.14.2",
+  "pip_version": "25.3",
+  "changes": [
+    {
+      "package": "fastapi",
+      "old": "0.95.0",
+      "new": "0.111.0",
+      "reason": "Updated to match pyproject and obtain latest security fixes"
+    },
+    {
+      "package": "uvicorn",
+      "old": "0.21.0",
+      "new": "0.30.1",
+      "reason": "Minor release bump for compatibility with newer FastAPI and to resolve CVEs"
+    },
+    {
+      "package": "pandas",
+      "old": "1.5.3",
+      "new": "2.2.2",
+      "reason": "Updated to latest stable with security patches"
+    },
+    {
+      "package": "numpy",
+      "old": "1.23.5",
+      "new": "1.26.4",
+      "reason": "Updated for compatibility with latest pandas and security fixes"
+    },
+    {
+      "package": "python-dateutil",
+      "old": "2.8.2",
+      "new": "2.9.0.post0",
+      "reason": "Prepared for future Python versions and patched vulnerabilities"
+    },
+    {
+      "package": "structlog",
+      "old": "21.5.0",
+      "new": "24.1.0",
+      "reason": "Brought up to date with latest logging improvements and fixes"
+    },
+    {
+      "package": "pyyaml",
+      "old": "5.4.1",
+      "new": "6.0.2",
+      "reason": "Security vulnerability in 5.4.1; upgraded to fixed release"
+    },
+    {
+      "package": "jsonschema",
+      "old": "3.2.0",
+      "new": "4.22.0",
+      "reason": "Updated to support Draft202012 and resolve known bugs"
+    },
+    {
+      "package": "httpx",
+      "old": "0.23.0",
+      "new": "0.27.0",
+      "reason": "Minor version bump for compatibility and security patches"
+    },
+    {
+      "package": "anyio",
+      "old": "3.6.2",
+      "new": "4.4.0",
+      "reason": "Required by newer versions of fastapi/uvicorn"
+    },
+    {
+      "package": "pytest",
+      "old": "7.2.0",
+      "new": "8.3.2",
+      "reason": "Development dependency update for better test support"
+    }
+  ],
+  "notes": "requirements_backup.txt contains the original pins; requirements.txt has the updated, secured, and consistent set. The code was refactored to remove the pydantic dependency (earlier imports of pydantic and pydantic-settings were unnecessary and caused build issues). pyproject.toml is aligned with the new requirements except for the python version which is now set to >=3.11 in documentation."
+}
