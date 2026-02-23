@@ -1,0 +1,19 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+.env.*
+
+# Test / coverage
+.pytest_cache/
+.coverage*
+htmlcov/
+logs/
+
+# IDE
+.vscode/
+.idea/

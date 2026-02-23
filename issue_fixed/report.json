@@ -1,0 +1,108 @@
+{
+  "summary": {
+    "status": "fixed",
+    "requires_python": ">=3.10,<3.15",
+    "notes": "Aligned requirements with pyproject.toml, pinned versions, removed heavy compiled dependencies for Python 3.14 compatibility, and remediated known CVEs (notably PyYAML)."
+  },
+  "changes": [
+    {
+      "package": "PyYAML",
+      "from": "5.4.1",
+      "to": "6.0.2",
+      "reason": "5.4.1 is vulnerable to arbitrary code execution (CVE-2020-14343, GHSA-8q59-q68h-6hv4). Upgraded to latest stable compatible with Python 3.10+.",
+      "source": "requirements.txt, pyproject.toml"
+    },
+    {
+      "package": "fastapi",
+      "from": "0.95.0",
+      "to": "0.104.1",
+      "reason": "Old version misses security patches and typing compatibility fixes; align across dependency files.",
+      "source": "requirements.txt, pyproject.toml"
+    },
+    {
+      "package": "uvicorn",
+      "from": "0.21.0",
+      "to": "0.32.0",
+      "reason": "Align with FastAPI supported matrix; includes ASGI/security fixes.",
+      "source": "requirements.txt, pyproject.toml"
+    },
+    {
+      "package": "pydantic",
+      "from": "1.10.13",
+      "to": "2.12.5",
+      "reason": "v2 has cp314 wheels available; code updated to support both v1 & v2. This also resolves dependency solver conflicts with fastapi and httpx.",
+      "source": "requirements.txt, pyproject.toml"
+    },
+    {
+      "package": "pydantic-settings",
+      "from": null,
+      "to": "2.6.1",
+      "reason": "Used in app.config; pure-Python and compatible with pydantic v2.",
+      "source": "requirements.txt, pyproject.toml"
+    },
+    {
+      "package": "jsonschema",
+      "from": "3.2.0",
+      "to": "4.23.0",
+      "reason": "Old version lacks Draft202012 support; upgrade to match app.config usage and security fixes.",
+      "source": "requirements.txt, pyproject.toml"
+    },
+    {
+      "package": "structlog",
+      "from": "21.5.0",
+      "to": "24.4.0",
+      "reason": "Security/compat patches; align across files.",
+      "source": "requirements.txt, pyproject.toml"
+    },
+    {
+      "package": "httpx",
+      "from": "0.23.0",
+      "to": "0.26.0",
+      "reason": "Aligned with anyio 3.x to satisfy FastAPI 0.104.1 constraints and avoid resolution conflicts; still addresses GHSA advisories.",
+      "source": "requirements.txt, pyproject.toml"
+    },
+    {
+      "package": "anyio",
+      "from": "3.6.2",
+      "to": "3.7.1",
+      "reason": "Compatible with FastAPI 0.104.x and httpx 0.26.x; anyio 4.x caused resolver conflicts.",
+      "source": "requirements.txt, pyproject.toml"
+    },
+    {
+      "package": "pytest",
+      "from": "7.2.0",
+      "to": "8.3.4",
+      "reason": "Align dev dependencies across files; improved assertion introspection and Python 3.12+/3.14 compatibility.",
+      "source": "requirements.txt, pyproject.toml"
+    },
+    {
+      "package": "pandas",
+      "from": "1.5.3",
+      "to": null,
+      "reason": "Removed from mandatory dependencies to avoid compiled wheel issues on Python 3.14. Code now has a stdlib fallback; can be installed optionally if needed.",
+      "source": "requirements.txt"
+    },
+    {
+      "package": "numpy",
+      "from": "1.23.5",
+      "to": null,
+      "reason": "Removed from mandatory dependencies to avoid compiled wheel issues on Python 3.14. Code now has a stdlib fallback; can be installed optionally if needed.",
+      "source": "requirements.txt"
+    }
+  ],
+  "environment": {
+    "python": ">=3.10,<3.15",
+    "pip_check": "Use `pip check` after install to verify dependency graph",
+    "hash_pin": "Consider `pip-compile --generate-hashes` for production"
+  },
+  "validation": {
+    "commands": [
+      "python -m venv .venv",
+      "./.venv/bin/pip install --upgrade pip",
+      "./.venv/bin/pip install -r requirements.txt",
+      "./.venv/bin/python -m pytest -q"
+    ],
+    "status": "passed",
+    "notes": "All tests pass. See logs/test_run.log after running auto_test.py; warnings are from upstream asyncio deprecations on Python 3.14"
+  }
+}
