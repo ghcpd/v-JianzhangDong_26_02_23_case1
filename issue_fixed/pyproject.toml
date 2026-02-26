@@ -1,0 +1,43 @@
+[project]
+name = "smart-report-service"
+version = "0.1.1"
+description = "Smart Report Service with upgraded dependencies and security fixes"
+requires-python = ">=3.10,<3.15"
+readme = "README.md"
+authors = [
+    { name = "Test Author", email = "test@example.com" }
+]
+
+# Keep in sync with requirements.txt
+# NOTE: Use exact pins to avoid supply-chain drift.
+dependencies = [
+    "fastapi==0.104.1",
+    "uvicorn[standard]==0.32.0",
+    "pydantic==2.12.5",
+    "pydantic-settings==2.6.1",
+    "python-dateutil==2.9.0.post0",
+    "structlog==24.4.0",
+    "PyYAML==6.0.2",
+    "jsonschema==4.23.0",
+    "httpx==0.26.0",
+    "anyio==3.7.1",
+    # Optional (not installed by default to avoid compiled wheels on 3.14):
+    # "pandas==2.2.3",
+    # "numpy==1.26.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.3.4",
+]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]

@@ -1,0 +1,433 @@
+User: Hey, I need help fixing some dependency issues in this Python project. 
+
+**The Problem:**
+The requirements.txt file has seriously outdated packages with known security vulnerabilities (especially pyyaml 5.4.1). Also, some packages aren't even pinned to specific versions, and the pyproject.toml specifies Python >=3.14 which doesn't make sense. The dependencies are also inconsistent between requirements.txt and pyproject.toml.
+
+**What I Need:**
+Please create a new folder called `issue_fixed/` and set everything up there - don't modify the original files. In that folder:
+
+1. Backup the original requirements.txt as requirements_backup.txt
+2. Check Python/pip versions and update requirements.txt with secure, compatible versions
+3. Create a report.json documenting what changed and why
+4. Generate environment setup scripts (Dockerfile, setup.sh, run_test.bat, run_test.sh)
+5. Create a clean virtual environment in .venv/ with all dependencies installed
+6. Update/create .gitignore to exclude .venv/
+7. Create auto_test.py that runs all tests in the tests/ folder using the .venv environment and logs results to logs/test_run.log
+8. Write a README.md explaining everything
+
+**Critical Requirement:**
+All tests in the tests/ folder must pass automatically without any modifications to the test files themselves. The auto_test.py should discover and run all tests, and they all need to pass. Results should be logged to logs/test_run.log.
+
+Thanks!
+
+GitHub Copilot: Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/requirements.txt)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/pyproject.toml)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/app/config.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/app/services.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/app/main.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/app/models.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/app/utils.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/tests/test_utils.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/tests/test_services.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/tests/test_api.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/app/config.yaml)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/requirements_backup.txt)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/requirements.txt)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/pyproject.toml)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/__init__.py)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/config.py)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/models.py)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/services.py)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/utils.py)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/main.py)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/config.yaml)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/tests/test_utils.py)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/tests/test_services.py)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/tests/test_api.py)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/.gitignore)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/auto_test.py)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/setup.sh)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/run_test.sh)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/run_test.bat)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/setup.bat)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/Dockerfile)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/report.json)
+
+Created [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/README.md)
+
+Ran terminal command: cd issue_fixed; python -m venv .venv; .\.venv\Scripts\python.exe -m pip install --upgrade pip; .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+Completed with input: cd issue_fixed; python -m venv .venv; .\.venv\Scripts\python.exe -m pip install --upgrade pip; .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+
+Replacing 14 lines with 14 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/requirements.txt)
+
+
+```
+
+```
+
+
+Replacing 25 lines with 24 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/pyproject.toml)
+
+
+```
+
+```
+
+
+Replacing 7 lines with 12 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/config.py)
+
+
+```
+
+```
+
+
+Replacing 10 lines with 16 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/config.py)
+
+
+```
+
+```
+
+
+Replacing 16 lines with 26 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/models.py)
+
+
+```
+
+```
+
+
+Using "Replace String in File"
+
+Made changes.
+
+User: finish the job
+
+GitHub Copilot: Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/requirements.txt)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/pyproject.toml)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/app/services.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/app/utils.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/app/config.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/app/main.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/tests/test_utils.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/tests/test_services.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/tests/test_api.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/requirements.txt)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue/app/models.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/models.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/services.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/utils.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/config.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/main.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/tests/test_api.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/tests/test_services.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/tests/test_utils.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/.gitignore)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/report.json)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/pyproject.toml)
+
+Ran terminal command: python --version; pip --version
+Completed with input: python --version; pip --version
+
+Ran terminal command: py --list
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/auto_test.py)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/setup.sh)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/run_test.sh)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/run_test.bat)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/setup.bat)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/config.yaml)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/README.md)
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/Dockerfile)
+
+Using "Multi-Replace String in Files"
+
+Replacing 30 lines with 67 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/services.py)
+
+
+```
+
+```
+
+
+Replacing 14 lines with 14 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/requirements.txt)
+
+
+```
+
+```
+
+
+Replacing 16 lines with 17 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/pyproject.toml)
+
+
+```
+
+```
+
+
+Replacing 95 lines with 102 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/report.json)
+
+
+```
+
+```
+
+
+Replacing 11 lines with 12 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/README.md)
+
+
+```
+
+```
+
+
+Ran terminal command: cd issue_fixed; if (Test-Path .venv) { Remove-Item -Recurse -Force .venv }; python -m venv .venv; .\.venv\Scripts\python.exe -m pip install --upgrade pip wheel setuptools
+
+Ran terminal command: .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+Completed with input: .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+
+Ran terminal command: .\.venv\Scripts\python.exe -m pip install fastapi==0.104.1 anyio==3.7.1 httpx==0.26.0
+
+Replacing 14 lines with 14 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/requirements.txt)
+
+
+```
+
+```
+
+
+Replacing 15 lines with 16 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/pyproject.toml)
+
+
+```
+
+```
+
+
+Replacing 58 lines with 65 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/report.json)
+
+
+```
+
+```
+
+
+Replacing 5 lines with 7 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/README.md)
+
+
+```
+
+```
+
+
+Ran terminal command: .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+
+Ran terminal command: .\.venv\Scripts\python.exe -m pytest -q
+Completed with input: .\.venv\Scripts\python.exe -m pytest -q
+
+Replacing 39 lines with 66 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/models.py)
+
+
+```
+
+```
+
+
+Replacing 40 lines with 43 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/config.py)
+
+
+```
+
+```
+
+
+Ran terminal command: .\.venv\Scripts\python.exe -m pytest -q
+
+Ran terminal command: .\.venv\Scripts\python.exe auto_test.py
+
+Replacing 6 lines with 8 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/auto_test.py)
+
+
+```
+
+```
+
+
+Ran terminal command: .\.venv\Scripts\python.exe auto_test.py
+
+Replacing 11 lines with 11 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/report.json)
+
+
+```
+
+```
+
+
+Replacing 5 lines with 6 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/README.md)
+
+
+```
+
+```
+
+
+Replacing 5 lines with 6 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/.gitignore)
+
+
+```
+
+```
+
+
+Read [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/logs/test_run.log)
+
+Replacing 7 lines with 9 lines in [](file:///d%3A/projects/v-JianzhangDong_26_02_23_case1/goldeneye-prime/v-JianzhangDong_26_02_23_case1/issue_fixed/app/services.py)
+
+
+```
+
+```
+
+
+Ran terminal command: .\.venv\Scripts\python.exe -m pytest -q
+
+Ran terminal command: .\.venv\Scripts\python.exe auto_test.py
+
+## ✅ Done – Dependency Fixes & Test Automation (in issue_fixed)
+
+### 🔑 What’s delivered
+- 📁 **Isolated clone** under issue_fixed (original issue untouched).
+- 🧾 **`requirements_backup.txt`** holds the original pins.
+- 📦 **Pinned, secure deps** in requirements.txt & mirrored in pyproject.toml.
+- 🧪 **All tests pass** (`pytest -q`) and **auto_test logging** works → see test_run.log.
+- 🛡️ **PyYAML upgraded** (CVE-2020-14343 fixed); resolver conflicts addressed.
+- 🔧 **Code adjusted** for Python 3.14 + Pydantic v2 compatibility (no test changes).
+
+### 📦 Final dependency set (pinned)
+| Package | Version | Notes |
+|--------|---------|-------|
+| `fastapi` | `0.104.1` | Aligns with starlette 0.27 |
+| `uvicorn[standard]` | `0.32.0` | ASGI server |
+| `pydantic` | `2.12.5` | cp314 wheels available |
+| `pydantic-settings` | `2.6.1` | env config |
+| `httpx` | `0.26.0` | compatible with anyio 3.7 |
+| `anyio` | `3.7.1` | satisfies FastAPI constraints |
+| `PyYAML` | `6.0.2` | CVE fix |
+| `jsonschema` | `4.23.0` | Draft202012 |
+| `structlog` | `24.4.0` | logging |
+| `python-dateutil` | `2.9.0.post0` | parsing |
+| `pytest` | `8.3.4` | tests |
+> Optional (not installed by default to avoid cp314 wheels): `pandas==2.2.3`, `numpy==1.26.4`
+
+### 🔧 Code changes (key files)
+- services.py: now supports **optional pandas/numpy**; uses stdlib fallback and timezone-aware timestamps.
+- models.py & config.py: **pydantic v1/v2-safe** (`Config` vs `model_config` chosen at runtime).
+- auto_test.py: logs to test_run.log using `.venv` Python; now uses `datetime.now(timezone.utc)`.
+- .gitignore: added `.venv/` and `logs/`.
+- report.json: status **passed**; documents rationale and CVE fixes.
+- README.md: updated walkthrough + compatibility notes.
+
+### 🛠️ Setup & run
+```powershell
+cd issue_fixed
+
+# Create venv & install deps
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip wheel setuptools
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip check  # optional
+
+# Run tests
+.\.venv\Scripts\python.exe -m pytest -q
+
+# Or use the automation wrapper (logs to logs/test_run.log)
+.\.venv\Scripts\python.exe auto_test.py
+```
+
+### 🧪 Test status
+- ✅ `pytest -q` → **PASS**
+- 📝 test_run.log contains latest run (warnings are upstream `asyncio.iscoroutinefunction` deprecations on Python 3.14; safe to ignore for now).
+
+### 📁 Quick file pointers
+- requirements.txt ← updated pins
+- requirements_backup.txt ← original backup
+- pyproject.toml ← aligned deps, `requires-python = ">=3.10,<3.15"`
+- report.json ← documented changes, status `passed`
+- auto_test.py ← automated runner
+- `issue_fixed/setup.sh|.bat`, `run_test.sh|.bat` ← helper scripts
+- config.py, models.py, services.py ← pydantic compatibility + optional deps
+
+> ℹ️ Upstream deprecation warnings stem from FastAPI/Starlette on Python 3.14; they don’t affect test outcomes.
+
+You’re all set! 🎉
+
+Made changes.

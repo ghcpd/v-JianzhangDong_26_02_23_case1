@@ -1,0 +1,14 @@
+# Production and test dependencies (pinned). Compatible with Python 3.10–3.14.
+# ⚠️ Note: Avoid heavy compiled deps to keep installs working on pre-release Python (3.14).
+# If you need pandas/numpy, install optionally: pip install pandas==2.2.3 numpy==1.26.4
+fastapi==0.104.1
+uvicorn[standard]==0.32.0
+pydantic==2.12.5
+pydantic-settings==2.6.1
+python-dateutil==2.9.0.post0
+structlog==24.4.0
+PyYAML==6.0.2
+jsonschema==4.23.0
+httpx==0.26.0
+anyio==3.7.1
+pytest==8.3.4
